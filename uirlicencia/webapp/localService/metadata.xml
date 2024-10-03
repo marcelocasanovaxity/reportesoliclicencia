@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZGW_PRB_DESAFIO_SRV" xml:lang="es" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="DiasHab" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="f_inicio"/>
+                    <PropertyRef Name="f_fin"/>
+                </Key>
+                <Property Name="f_inicio" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Fecha" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="f_fin" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Fecha" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="dias_lic" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:label="Número" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="CrearSolic" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="id_usuario"/>
+                    <PropertyRef Name="cod_motivo"/>
+                </Key>
+                <Property Name="id_usuario" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Campo de texto, longitud 10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="cod_motivo" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Motivo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="asunto" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="c" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="f_inicio" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Fecha" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="f_fin" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Fecha" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="observ" Type="Edm.String" Nullable="false" MaxLength="128" sap:unicode="false" sap:label="Área de trabajo de longitud 128" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Personal" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="idusuario"/>
+                </Key>
+                <Property Name="idusuario" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Campo de texto, longitud 10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="nombre" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Nombre pila" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="apellido" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Apellido" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="cargo" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Cargo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="correo" Type="Edm.String" Nullable="false" MaxLength="241" sap:unicode="false" sap:label="Dir.cor.elec." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="dias_disp" Type="Edm.Int16" Nullable="false" sap:unicode="false" sap:label="Int2" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZPRB_C_LICType" sap:label="Tipos de licencia" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="codigo"/>
+                </Key>
+                <Property Name="codigo" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Val. inferior dom." sap:quickinfo="Valores para dominios, valor individual/límite inferior"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="60" sap:label="Descrip.breve" sap:quickinfo="Texto breve p.valores fijos"/>
+            </EntityType>
+            <EntityType Name="ZPRB_C_RSOLType" sap:label="Reporte de solicitudes" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IdSolic"/>
+                </Key>
+                <Property Name="IdSolic" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="ID" sap:quickinfo="Campo de texto, longitud 10"/>
+                <Property Name="FFin" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Fin" sap:quickinfo="Fecha"/>
+                <Property Name="Observ" Type="Edm.String" MaxLength="128" sap:label="Observación" sap:quickinfo="Área de trabajo de longitud 128"/>
+                <Property Name="Estado" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Estado" sap:quickinfo="Char 15"/>
+                <Property Name="FSolic" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Fecha"/>
+                <Property Name="HSolic" Type="Edm.Time" Precision="0" sap:label="Hora" sap:quickinfo="Hora del día"/>
+                <Property Name="IdUsuario" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Usuario" sap:quickinfo="Campo de texto, longitud 10"/>
+                <Property Name="CodMotivo" Type="Edm.String" MaxLength="3" sap:label="Motivo"/>
+                <Property Name="DescMotivo" Type="Edm.String" MaxLength="60" sap:label="Desc. Motivo" sap:quickinfo="Texto breve p.valores fijos"/>
+                <Property Name="Asunto" Type="Edm.String" MaxLength="50" sap:label="Asunto" sap:quickinfo="Comentario"/>
+                <Property Name="DiasLic" Type="Edm.Int32" sap:label="Dias" sap:quickinfo="Número natural"/>
+                <Property Name="FInicio" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Inicio" sap:quickinfo="Fecha"/>
+            </EntityType>
+            <EntityContainer Name="ZGW_PRB_DESAFIO_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="DiasHabSet" EntityType="ZGW_PRB_DESAFIO_SRV.DiasHab" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="CrearSolicSet" EntityType="ZGW_PRB_DESAFIO_SRV.CrearSolic" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="PersonalSet" EntityType="ZGW_PRB_DESAFIO_SRV.Personal" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPRB_C_LIC" EntityType="ZGW_PRB_DESAFIO_SRV.ZPRB_C_LICType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPRB_C_RSOL" EntityType="ZGW_PRB_DESAFIO_SRV.ZPRB_C_RSOLType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <atom:link rel="self" href="https://SAPFIORI.AXITY.COM:8000/sap/opu/odata/sap/ZGW_PRB_DESAFIO_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://SAPFIORI.AXITY.COM:8000/sap/opu/odata/sap/ZGW_PRB_DESAFIO_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

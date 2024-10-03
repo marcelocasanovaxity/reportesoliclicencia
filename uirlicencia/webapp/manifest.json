@@ -1,0 +1,190 @@
+{
+    "_version": "1.65.0",
+    "sap.app": {
+        "id": "reportesolicitud.uirlicencia",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:lrop",
+            "version": "1.15.1",
+            "toolsId": "6cb963d8-a881-4d72-ba99-f10e6940995f"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZGW_PRB_DESAFIO_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZGW_PRB_DESAFIO_ANNO_MDL",
+                        "annotation"
+                    ],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZGW_PRB_DESAFIO_ANNO_MDL": {
+                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZGW_PRB_DESAFIO_ANNO_MDL',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/ZGW_PRB_DESAFIO_ANNO_MDL.xml"
+                }
+            },
+            "annotation": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation.xml",
+                "settings": {
+                    "localUri": "annotations/annotation.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.128.1",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {},
+                "sap.f": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.suite.ui.generic.template": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "reportesolicitud.uirlicencia.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "resources": {
+            "css": []
+        },
+        "routing": {
+            "config": {},
+            "routes": [],
+            "targets": {}
+        },
+        "extends": {
+            "extensions": {
+                "sap.ui.controllerExtensions": {
+                    "sap.suite.ui.generic.template.ListReport.view.ListReport": {
+                        "controllerName": "reportesolicitud.uirlicencia.ext.controller.ListReportExt",
+                        "sap.ui.generic.app": {
+                            "ZPRB_C_RSOL": {
+                                "EntitySet": "ZPRB_C_RSOL",
+                                "Actions": {
+                                    "Aceptar": {
+                                        "id": "AceptarButton",
+                                        "text": "Aceptar",
+                                        "press": "onAceptar",
+                                        "requiresSelection": true
+                                    },
+                                    "Rechazar": {
+                                        "id": "RechazarButton",
+                                        "text": "Rechazar",
+                                        "press": "onRechazar",
+                                        "requiresSelection": true
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "sap.ui.generic.app": {
+        "_version": "1.3.0",
+        "settings": {
+            "forceGlobalRefresh": false,
+            "objectPageHeaderType": "Dynamic",
+            "considerAnalyticalParameters": true,
+            "showDraftToggle": false
+        },
+        "pages": {
+            "ListReport|ZPRB_C_RSOL": {
+                "entitySet": "ZPRB_C_RSOL",
+                "component": {
+                    "name": "sap.suite.ui.generic.template.ListReport",
+                    "list": true,
+                    "settings": {
+                        "condensedTableLayout": true,
+                        "smartVariantManagement": true,
+                        "enableTableFilterInPageVariant": true,
+                        "filterSettings": {
+                            "dateSettings": {
+                                "useDateRange": true
+                            }
+                        },
+                        "tableSettings": {
+                            "type": "ResponsiveTable"
+                        }
+                    }
+                },
+                "pages": {
+                    "ObjectPage|ZPRB_C_RSOL": {
+                        "entitySet": "ZPRB_C_RSOL",
+                        "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+                        "component": {
+                            "name": "sap.suite.ui.generic.template.ObjectPage"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "transactional"
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "reportesoliclicencia"
+    }
+}
